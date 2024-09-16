@@ -1,9 +1,6 @@
-**/.Xil
-**/**.cache
-**/**.hw
-**/**.sim
-**/**.runs
-**/**.ip_user_files
+# Ignore everything
 
-**/**.jou
-**/**.log
+**/**
+
+!**/**.srcs
+!**/**.xpr
