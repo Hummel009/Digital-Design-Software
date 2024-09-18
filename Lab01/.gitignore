@@ -1,9 +1,0 @@
-# Ignore everything
-
-**/**
-
-!**/**.srcs
-!**/**.xpr
-!**/**.txt
-!**/**.png
-!**/**.xlsx
