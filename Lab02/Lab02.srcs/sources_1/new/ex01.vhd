@@ -8,7 +8,30 @@ entity ex01 is
            Q : out STD_LOGIC);
 end ex01;
 
-architecture Behavioral of ex01 is
+architecture Structural of ex01 is
+
+component AND2 is
+    Port ( A : in STD_LOGIC;
+       B : in STD_LOGIC;
+       Q : out STD_LOGIC);
+end component;
+
+component OR2 is
+    Port ( A : in STD_LOGIC;
+       B : in STD_LOGIC;
+       Q : out STD_LOGIC);
+end component;
+
+component INV is
+    Port ( A : in STD_LOGIC;
+       Q : out STD_LOGIC);
+end component;
+
+signal SN, ASN, SB: STD_LOGIC;
+
 begin
-	Q <= A when S = '0' else B;
-end Behavioral;
+	U1: INV port map (S, SN);
+	U2: AND2 port map (A, SN, ASN);
+	U3: AND2 port map (S, B, SB);
+	U4: OR2 port map (ASN, SB, Q);
+end Structural;
