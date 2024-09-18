@@ -1,15 +1,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity ex01 is
-    Port ( A : in STD_LOGIC;
+entity ex is
+    Port ( S : in STD_LOGIC;
+           A : in STD_LOGIC;
            B : in STD_LOGIC;
-           C : in STD_LOGIC;
-           D : in STD_LOGIC;
            Q : out STD_LOGIC);
-end ex01;
+end ex;
 
-architecture Behavioral of ex01 is
+architecture Behavioral of ex is
 begin
-	Q <= A and B and C and D;
+	Q <= A when S = '0' else B;
 end Behavioral;
