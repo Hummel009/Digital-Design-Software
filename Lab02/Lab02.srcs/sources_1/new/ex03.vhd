@@ -83,7 +83,6 @@ architecture Test of ex03t is
         ); 
     end component;
 
-
 	signal A, B, C, D: STD_LOGIC := '0';
 	signal Q_B, Q_S: STD_LOGIC;
 	signal ERROR: STD_LOGIC;
@@ -92,8 +91,8 @@ architecture Test of ex03t is
 	constant PERIOD: time := 10 ns; 
 	    
 begin
-    UUT_B: ex03b port map(A, B, C, D, Q_B);
     UUT_S: ex03s port map(A, B, C, D, Q_S);
+    UUT_B: ex03b port map(A, B, C, D, Q_B);
     
     A <= TEST_VECTOR(0);
     B <= TEST_VECTOR(1);
