@@ -9,7 +9,7 @@ entity half_sum is
 		);
 end half_sum;
 
-architecture Structural OF half_sum is	
+architecture Structural of half_sum is	
 
 	component xor2	  
 		port(
