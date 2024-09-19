@@ -1,14 +1,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity ex01_cmp009 is
+entity mux_ex01 is
 	port(							
 		A, B, S: in STD_LOGIC; 
 		Q: out STD_LOGIC
 	); 
-end ex01_cmp009;
+end mux_ex01;
 
-architecture Structural of ex01_cmp009 is
+architecture Structural of mux_ex01 is
 	
 	component inv
 		port(

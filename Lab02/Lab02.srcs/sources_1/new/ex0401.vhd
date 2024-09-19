@@ -19,7 +19,7 @@ architecture Structural of ex0401s is
 		);	
 	end component;
 
-	component ex01_cmp009 is
+	component mux_ex01 is
         port(
             A, B, S: in std_logic;
             Q: out std_logic
@@ -29,8 +29,8 @@ architecture Structural of ex0401s is
 	signal R: STD_LOGIC;
    
 begin
-	U1: ex01_cmp009 port map(A, B, S, R); -- multiplexer
-	U2: and2 port map(R, C, Q); -- combine device
+	MUX: mux_ex01 port map(A, B, S, R);
+	COMB: and2 port map(R, C, Q);
 end Structural;
 
 -- BEHAVIORAL --
@@ -65,14 +65,14 @@ architecture Test of ex0401t is
 
     component ex0401s
         port(							
-            A, B, C, D: in STD_LOGIC; 
+            S, A, B, C: in STD_LOGIC; 
             Q: out STD_LOGIC
         ); 
     end component;
 
     component ex0401b
         port(							
-            A, B, C, D: in STD_LOGIC; 
+            S, A, B, C: in STD_LOGIC; 
             Q: out STD_LOGIC
         ); 
     end component;
