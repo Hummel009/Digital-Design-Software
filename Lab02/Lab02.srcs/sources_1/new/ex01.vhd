@@ -14,21 +14,21 @@ architecture Structural of ex01 is
 		port(							
 			A, B: in STD_LOGIC; 
 			R: out STD_LOGIC
-			);	
+		);	
 	end component;
 	
 	component inv
 		port(
 			A: in STD_LOGIC;
 			nA: out STD_LOGIC
-			);
+		);
 	end component;
 	
 	component or2
 		port(
 			A, B: in STD_LOGIC;
 			R: out STD_LOGIC
-			);
+		);
 	end component;
 	
 	signal nS, AnS, BS: STD_LOGIC;
