@@ -2,11 +2,10 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0203 is
-    Port ( A : in STD_LOGIC;
-           B : in STD_LOGIC;
-           C : in STD_LOGIC;
-           Q : out STD_LOGIC;
-           NQ : out STD_LOGIC);
+	port(
+		A, B, C: in STD_LOGIC;
+		Q, nQ: out STD_LOGIC
+	);
 end ex0203;
 
 architecture Behavioral of ex0203 is
@@ -14,5 +13,5 @@ architecture Behavioral of ex0203 is
 begin
 	tempQ <= (A and B) or (C and not B);
 	Q <= tempQ;
-	NQ <= not tempQ;
+	nQ <= not tempQ;
 end Behavioral;

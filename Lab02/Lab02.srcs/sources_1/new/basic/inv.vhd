@@ -5,7 +5,7 @@ entity inv is
 	port(
 		A: in STD_LOGIC;
 		nA: out STD_LOGIC
-		);
+	);
 end inv;
 
 architecture Behavioral of inv is

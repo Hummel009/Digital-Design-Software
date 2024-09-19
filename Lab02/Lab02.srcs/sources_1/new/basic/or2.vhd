@@ -5,7 +5,7 @@ entity or2 is
 	port(
 		A, B: in STD_LOGIC;
 		R: out STD_LOGIC
-		);
+	);
 end or2;
 
 architecture Behavioral of or2 is

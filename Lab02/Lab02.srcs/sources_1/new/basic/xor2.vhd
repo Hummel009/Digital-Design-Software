@@ -5,7 +5,7 @@ entity xor2 is
 	port(
 		A, B: in STD_LOGIC;
 		R: out STD_LOGIC
-		);
+	);
 end xor2;
 
 architecture Behavioral of xor2 is

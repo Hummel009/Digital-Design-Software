@@ -5,7 +5,7 @@ entity and2 is
 	port(
 		A, B: in STD_LOGIC;
 		R: out STD_LOGIC
-		);
+	);
 end and2;
 
 architecture Behavioral of and2 is

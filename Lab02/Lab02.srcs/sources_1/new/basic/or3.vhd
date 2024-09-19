@@ -5,15 +5,15 @@ entity or3 is
 	port(
 		A, B, C: in STD_LOGIC;
 		R: out STD_LOGIC
-		);
+	);
 end or3;
 
 architecture Structural of or3 is
 
 	component or2
 		port(
-		A, B: in STD_LOGIC;
-		R: out STD_LOGIC
+			A, B: in STD_LOGIC;
+			R: out STD_LOGIC
 		);
 	end component;
 

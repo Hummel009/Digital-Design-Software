@@ -4,9 +4,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity sum1 is
 	port(
 		A, B, Q: in STD_LOGIC;
-		S,
-		C: out STD_LOGIC
-		);
+		S, C: out STD_LOGIC
+	);
 end sum1;
 
 architecture Structural of sum1 is
@@ -14,16 +13,15 @@ architecture Structural of sum1 is
 	component half_sum
 		port(
 			A, B: in STD_LOGIC;
-			S,
-			C: out STD_LOGIC
-			);
+			S, C: out STD_LOGIC
+		);
 	end component;
 	
 	component or2
 		port(
 			A, B: in STD_LOGIC;
 			R: out STD_LOGIC
-			);
+		);
 	end component;
 	
 	signal A_B_sum, A_B_carry, A_B_Q_carry: STD_LOGIC;

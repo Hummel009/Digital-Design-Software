@@ -5,7 +5,7 @@ entity nand3 is
 	port(
 		A, B, C: in STD_LOGIC;
 		R: out STD_LOGIC
-		);
+	);
 end nand3;
 
 architecture Structural of nand3 is

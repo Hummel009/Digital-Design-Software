@@ -5,7 +5,7 @@ entity and3 is
 	port(
 		A, B, C: in STD_LOGIC;
 		R: out STD_LOGIC
-		);
+	);
 end and3;
 
 architecture Structural of and3 is
@@ -14,7 +14,7 @@ architecture Structural of and3 is
 		port(
 			A, B: in STD_LOGIC;
 			R: out STD_LOGIC
-			);
+		);
 	end component;
 
 	signal and2_connector: STD_LOGIC;

@@ -6,7 +6,7 @@ entity half_sum is
 		A, B: in STD_LOGIC;
 		S: out STD_LOGIC;
 		C: out STD_LOGIC
-		);
+	);
 end half_sum;
 
 architecture Structural of half_sum is	
@@ -15,14 +15,14 @@ architecture Structural of half_sum is
 		port(
 			A, B: in STD_LOGIC;
 			R: out STD_LOGIC
-			);
+		);
 	end component;
 	
 	component and2	  
 		port(
 			A, B: in STD_LOGIC;
 			R: out STD_LOGIC
-			);
+		);
 	end component;
 	
 begin
