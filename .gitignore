@@ -2,5 +2,6 @@ Lab**/.Xil
 Lab**/**.ip_user_files
 Lab**/**.cache
 Lab**/**.hw
+Lab**/**.runs
 Lab**/**.sim
 Lab**/vivado**

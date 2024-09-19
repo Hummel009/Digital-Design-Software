@@ -2,36 +2,39 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex01 is
-    Port ( S : in STD_LOGIC;
-           A : in STD_LOGIC;
-           B : in STD_LOGIC;
-           Q : out STD_LOGIC);
+	port(        					
+		A, B, S: in STD_LOGIC; 
+		Q: out STD_LOGIC
+		); 
 end ex01;
 
 architecture Structural of ex01 is
-
-component AND2 is
-    Port ( A : in STD_LOGIC;
-       B : in STD_LOGIC;
-       Q : out STD_LOGIC);
-end component;
-
-component OR2 is
-    Port ( A : in STD_LOGIC;
-       B : in STD_LOGIC;
-       Q : out STD_LOGIC);
-end component;
-
-component INV is
-    Port ( A : in STD_LOGIC;
-       Q : out STD_LOGIC);
-end component;
-
-signal SN, ASN, SB: STD_LOGIC;
-
-begin
-	U1: INV port map (S, SN);
-	U2: AND2 port map (A, SN, ASN);
-	U3: AND2 port map (S, B, SB);
-	U4: OR2 port map (ASN, SB, Q);
+	
+	component and2
+		port(        					
+			A, B: in STD_LOGIC; 
+			R: out STD_LOGIC
+			);	
+	end component;
+	
+	component inv
+		port(
+			A: in STD_LOGIC;
+			nA: out STD_LOGIC
+			);
+	end component;
+	
+	component or2
+		port(
+			A, B: in STD_LOGIC;
+			R: out STD_LOGIC
+			);
+	end component;
+	
+	signal nS, AnS, BS: STD_LOGIC;
+begin	
+	U1: inv port map(S, nS);
+	U2: and2 port map(A, nS, AnS);
+	U3: and2 port map(B, S, BS);
+	U4: or2 port map(AnS, BS, Q);
 end Structural;
