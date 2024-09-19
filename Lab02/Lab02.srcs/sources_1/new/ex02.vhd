@@ -10,13 +10,6 @@ end ex02;
 
 architecture Structural of ex02 is
 
-	component mux2 is
-		port(
-			A, B, S: in std_logic;
-			Q: out std_logic
-		);
-	end component;
-	
 	component ex01_cmp009 is
         port(
             A, B, S: in std_logic;

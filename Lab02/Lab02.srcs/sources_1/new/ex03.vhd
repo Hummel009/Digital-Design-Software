@@ -37,3 +37,8 @@ begin
 	U2: and2 port map(C, D, CD);
 	U3: or2 port map(ABC, CD, Q);
 end Structural;
+
+--architecture Behavioral of ex03 is
+--begin
+--	Q <= (A and B and C) or (C and D);
+--end Behavioral;

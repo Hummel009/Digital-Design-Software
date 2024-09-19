@@ -32,6 +32,7 @@ architecture Structural of ex01 is
 	end component;
 	
 	signal nS, AnS, BS: STD_LOGIC;
+
 begin	
 	U1: inv port map(S, nS);
 	U2: and2 port map(A, nS, AnS);
