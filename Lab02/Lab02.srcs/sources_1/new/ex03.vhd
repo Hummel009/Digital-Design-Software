@@ -84,24 +84,25 @@ architecture Test of ex03t is
     end component;
 
 
-	signal A, B, S: STD_LOGIC := '0';
+	signal A, B, C, D: STD_LOGIC := '0';
 	signal Q_B, Q_S: STD_LOGIC;
 	signal ERROR: STD_LOGIC;
-    signal TEST_VECTOR: STD_LOGIC_VECTOR(2 downto 0);
+    signal TEST_VECTOR: STD_LOGIC_VECTOR(3 downto 0);
 	
 	constant PERIOD: time := 10 ns; 
 	    
 begin
-    UUT_B: ex03b port map(A, B, S, Q_B);
-    UUT_S: ex03s port map(A, B, S, Q_S);
+    UUT_B: ex03b port map(A, B, C, D, Q_B);
+    UUT_S: ex03s port map(A, B, C, D, Q_S);
     
     A <= TEST_VECTOR(0);
     B <= TEST_VECTOR(1);
-    S <= TEST_VECTOR(2);
+    C <= TEST_VECTOR(2);
+    D <= TEST_VECTOR(3);
     
     PROC: process
     begin
-        for i in 0 to 7 loop
+        for i in 0 to 15 loop
             TEST_VECTOR <= STD_LOGIC_VECTOR(to_unsigned(i, TEST_VECTOR'length));
             wait for PERIOD;
         end loop;
