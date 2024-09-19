@@ -79,7 +79,7 @@ architecture Test of ex0402t is
 	end component;
 
 	signal S, D: STD_LOGIC := '0';
-	signal Q_1B, Q_2B, Q_1S, Q_2S: STD_LOGIC;
+	signal Q1_B, Q2_B, Q1_S, Q2_S: STD_LOGIC;
 	signal ERROR_1: STD_LOGIC;
 	signal ERROR_2: STD_LOGIC;
 	signal TEST_VECTOR: STD_LOGIC_VECTOR(1 downto 0);
@@ -87,8 +87,8 @@ architecture Test of ex0402t is
 	constant PERIOD: time := 10 ns; 
 		
 begin
-	UUT_S: ex0402s port map(S, D, Q_1S, Q_2S);
-	UUT_B: ex0402b port map(S, D, Q_1B, Q_2B);
+	UUT_S: ex0402s port map(S, D, Q1_S, Q2_S);
+	UUT_B: ex0402b port map(S, D, Q1_B, Q2_B);
 	
 	S <= TEST_VECTOR(0);
 	D <= TEST_VECTOR(1);
@@ -103,6 +103,6 @@ begin
 		report "End of simulation" severity FAILURE;
 	end process;
 		
-	ERROR_1 <= Q_1B xor Q_1S;
-	ERROR_2 <= Q_2B xor Q_2S;
+	ERROR_1 <= Q1_B xor Q1_S;
+	ERROR_2 <= Q2_B xor Q2_S;
 end Test;
