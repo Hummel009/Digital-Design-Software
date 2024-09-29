@@ -6,8 +6,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ex03s is
 	port(
 		D: in STD_LOGIC;
-		Q: out STD_LOGIC;
-		nQ: out STD_LOGIC
+		Q, nQ: out STD_LOGIC
 	);
 end ex03s;
 
@@ -30,9 +29,9 @@ architecture Structural of ex03s is
 	signal t1, t2, t3: STD_LOGIC;
 	
 begin
-	U1: inv port map (A => D, nA => t3);
-	U2: nor2 port map (A => D, B => t2, R => t1);
-	U3: nor2 port map (A => t3, B => t1, R => t2);
+	U1: inv port map (D, t3);
+	U2: nor2 port map (D, t2, t1);
+	U3: nor2 port map (t3, t1, t2);
 	Q <= t2;
 	nQ <= t1;
 end Structural;
@@ -45,8 +44,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ex03b is
 	port(
 		D: in STD_LOGIC;
-		Q: out STD_LOGIC;
-		nQ: out STD_LOGIC
+		Q, nQ: out STD_LOGIC
 	);
 end ex03b;
 
@@ -68,8 +66,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ex03p is
 	port(
 		D: in STD_LOGIC;
-		Q: out STD_LOGIC;
-		nQ: out STD_LOGIC
+		Q, nQ: out STD_LOGIC
 	);
 end ex03p;
 
@@ -96,24 +93,21 @@ architecture Test of ex03t is
 	component ex03s
 		port(
 			D: in STD_LOGIC;
-			Q: out STD_LOGIC;
-			nQ: out STD_LOGIC
+			Q, nQ: out STD_LOGIC
 		);
 	end component;
 	
 	component ex03b
 		port(
 			D: in STD_LOGIC;
-			Q: out STD_LOGIC;
-			nQ: out STD_LOGIC
+			Q, nQ: out STD_LOGIC
 		);
 	end component;
 	
 	component ex03p
 		port(
 			D: in STD_LOGIC;
-			Q: out STD_LOGIC;
-			nQ: out STD_LOGIC
+			Q, nQ: out STD_LOGIC
 		);
 	end component;
 	
@@ -128,6 +122,8 @@ architecture Test of ex03t is
 	signal Q_param: STD_LOGIC;
 	signal nQ_param: STD_LOGIC;
 
+	constant clock: time := 10 ns;
+	
 begin
 	Structural: ex03s port map (D, Q_struct, nQ_struct); 
 	
@@ -135,5 +131,5 @@ begin
 	
 	Parametral: ex03p port map (D, Q_param, nQ_param); 
 	
-	D <= not D after 100 ns;
+	D <= not D after clock;
 end Test;

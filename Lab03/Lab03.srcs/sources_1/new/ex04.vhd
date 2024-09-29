@@ -6,8 +6,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ex04s is
 	port(
 		D, E: in STD_LOGIC;
-		Q: out STD_LOGIC;
-		nQ: out STD_LOGIC
+		Q, nQ: out STD_LOGIC
 	);
 end ex04s;
 
@@ -53,8 +52,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ex04b is
 	port(
 		D, E: in STD_LOGIC;
-		Q: out STD_LOGIC;
-		nQ: out STD_LOGIC
+		Q, nQ: out STD_LOGIC
 	);
 end ex04b;
 
@@ -74,8 +72,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ex04p is
 	port(
 		D, E: in STD_LOGIC;
-		Q: out STD_LOGIC;
-		nQ: out STD_LOGIC
+		Q, nQ: out STD_LOGIC
 	);
 end ex04p;
 
@@ -97,24 +94,24 @@ end ex04t;
 
 architecture Test of ex04t is
 	component ex04s
-	port(
-		D, E: in STD_LOGIC;
-		Q, nQ: out STD_LOGIC
-	);
+		port(
+			D, E: in STD_LOGIC;
+			Q, nQ: out STD_LOGIC
+		);
 	end component;
 	
 	component ex04b
-	port(
-		D, E: in STD_LOGIC;
-		Q, nQ: out STD_LOGIC
-	);
+		port(
+			D, E: in STD_LOGIC;
+			Q, nQ: out STD_LOGIC
+		);
 	end component;
 	
 	component ex04p
-	port(
-		D, E: in STD_LOGIC;
-		Q, nQ: out STD_LOGIC
-	);
+		port(
+			D, E: in STD_LOGIC;
+			Q, nQ: out STD_LOGIC
+		);
 	end component;
 
 	signal D: STD_LOGIC := '0';
@@ -128,6 +125,9 @@ architecture Test of ex04t is
 	
 	signal Q_param: STD_LOGIC;
 	signal nQ_param: STD_LOGIC;
+	
+	constant clock: time := 10 ns;
+	
 begin
 	Structural: ex04s port map (D, E, Q_struct, nQ_struct);	 
 
@@ -135,7 +135,6 @@ begin
 	
 	Parametral: ex04p port map (D, E, Q_param, nQ_param);
 	
-	D <= not D after 10 ns;
-	E <= '1' after 40 ns when E = '0' else '0' after 10 ns;	
-
+	D <= not D after clock;
+	E <= '1' after clock * 4 when E = '0' else '0' after clock;	
 end Test;

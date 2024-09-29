@@ -5,12 +5,13 @@ use IEEE.STD_LOGIC_1164.ALL;
  
 entity ex02s is
 	port(
-	   R, S: in STD_LOGIC;
-	   Q, nQ: out STD_LOGIC
+		R, S: in STD_LOGIC;
+		Q, nQ: out STD_LOGIC
 	);
 end ex02s;
 
 architecture Structural of ex02s is
+
 	component nor2 is
 		port(
 			A, B: in STD_LOGIC;
@@ -78,6 +79,7 @@ entity ex02t is
 end ex02t;
 
 architecture Test of ex02t is
+
 	component ex02b
 		port(
 			R, S: in STD_LOGIC;
@@ -111,6 +113,8 @@ architecture Test of ex02t is
 	signal Q_param: STD_LOGIC;
 	signal nQ_param: STD_LOGIC;	
 	
+	constant clock: time := 10 ns;
+	
 begin
 	Structural: ex02s port map (R, S, Q_struct, nQ_struct);
 	
@@ -122,32 +126,32 @@ begin
 	begin
 		R <= '0';
 		S <= '0';
-		wait for 10 ns;	 
+		wait for clock;	 
 		
 		R <= '1';
 		S <= '0';
-		wait for 10 ns;	
+		wait for clock;	
 		
 		R <= '0';
 		S <= '0';
-		wait for 10 ns;	 
+		wait for clock;	 
 		
 		R <= '0';
 		S <= '1';
-		wait for 10 ns;	 
+		wait for clock;	 
 		
 		R <= '0';
 		S <= '0';
-		wait for 10 ns;		
+		wait for clock;		
 		
 		-- error value 
 		
 		R <= '1';
 		S <= '1';
-		wait for 10 ns;	
+		wait for clock;	
 		
 		R <= '0';
 		S <= '0';
-		wait for 10 ns;
+		wait for clock;
 	end process;
 end Test;
