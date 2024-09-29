@@ -15,7 +15,7 @@ begin
 	begin
 		if rising_edge(CLK) then
 			if (R = '1' and S = '1') then
-				result <= 'Z';
+				result <= 'U';
 			elsif R = '1' then
 				result <= '0';
 			elsif S = '1' then
@@ -47,7 +47,7 @@ architecture Test of ex0507t is
 	signal S: STD_LOGIC := '0';
 	signal CLK: STD_LOGIC := '0';
 	
-	signal Q: STD_LOGIC;
+	signal Q: STD_LOGIC := '0';
 	
 	constant clock: time := 10 ns;
 	

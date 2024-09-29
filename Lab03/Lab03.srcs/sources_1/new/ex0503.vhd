@@ -41,7 +41,7 @@ architecture Test of ex0503t is
 	signal D: STD_LOGIC := '0';
 	signal CLK: STD_LOGIC := '0';
 
-	signal Q: STD_LOGIC;
+	signal Q: STD_LOGIC := '0';
 	
 	constant clock: time := 10 ns;
 	

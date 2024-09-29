@@ -9,22 +9,22 @@ entity ex0508 is
 end ex0508;
 
 architecture Behavioral of ex0508 is
-	signal q_t: STD_LOGIC;
+	signal result: STD_LOGIC;
 begin
 	process(J, K, CLK)
 	begin
 		if rising_edge(CLK) then 
 			if (J = '1' and K = '1') then
-				q_t <= not q_t;
+				result <= not result;
 			elsif K = '1' then
-				q_t <= '0';
+				result <= '0';
 			elsif J = '1' then
-				q_t <= '1';
+				result <= '1';
 			end if; 
 		end if;
 	end process; 
 	
-	Q <= q_t;
+	Q <= result;
 end Behavioral;
 
 -- TEST --
@@ -47,7 +47,7 @@ architecture Test of ex0508t is
 	signal K: STD_LOGIC := '0';
 	signal CLK: STD_LOGIC := '0';
 	
-	signal Q: STD_LOGIC;
+	signal Q: STD_LOGIC := '0';
 	
 	constant clock: time := 10 ns;
 	
