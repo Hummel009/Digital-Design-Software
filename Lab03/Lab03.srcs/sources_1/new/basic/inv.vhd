@@ -9,6 +9,8 @@ entity inv is
 end inv;
 
 architecture Behavioral of inv is
+	attribute dont_touch: STRING;
+	attribute dont_touch of Behavioral: architecture is "true";
 begin
 	nA <= not A;
 end;

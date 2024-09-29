@@ -8,12 +8,16 @@ entity nor2 is
 	);
 end nor2;
 
-architecture Behavioral of nor2 is	
+architecture Behavioral of nor2 is
+	attribute dont_touch: STRING;
+	attribute dont_touch of Behavioral: architecture is "true";
 begin
 	R <= A nor B;		
 end;
 
-architecture BehavioralP of nor2 is	
+architecture BehavioralP of nor2 is
+	attribute dont_touch: STRING;
+	attribute dont_touch of BehavioralP: architecture is "true";
 begin
 	R <= A nor B after 4 ns;		
 end;
