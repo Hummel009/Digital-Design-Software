@@ -16,7 +16,7 @@ architecture Structural of ex01 is
 	
 	component inv
 		port(
-			a: in STD_LOGIC;
+			A: in STD_LOGIC;
 			nA: out STD_LOGIC
 		);
 	end component;
@@ -25,8 +25,8 @@ architecture Structural of ex01 is
 	signal inv_1_o: STD_LOGIC;
 	
 begin	
-	inv_0: inv port map (a => inv_1_o, nA => inv_0_o);
-	inv_1: inv port map (a => inv_0_o, nA => inv_1_o);
+	inv_0: inv port map (inv_1_o, inv_0_o);
+	inv_1: inv port map (inv_0_o, inv_1_o);
 	Q <= inv_1_o;	  
 	nQ <= inv_0_o;
 end Structural;
@@ -50,5 +50,5 @@ architecture Test of ex01t is
 	signal ex01_Q: STD_LOGIC;
 	signal ex01_nQ: STD_LOGIC;
 begin
-	bistable: ex01 port map (Q => ex01_Q, nQ => ex01_nQ);	
+	bistable: ex01 port map (ex01_Q, ex01_nQ);	
 end Test;

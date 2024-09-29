@@ -21,8 +21,8 @@ architecture Structural of ex02s is
 	signal t1, t2: STD_LOGIC;
 	
 begin
-	U2: nor2 port map (A => R, B => t1, R => t2);
-	U1: nor2 port map (A => S, B => t2, R => t1);
+	U2: nor2 port map (R, t1, t2);
+	U1: nor2 port map (S, t2, t1);
 	nQ <= t1;
 	Q <= t2;
 end Structural;
@@ -61,20 +61,12 @@ entity ex02p is
 end ex02p;
 
 architecture Parametral of ex02p is
-	component nor2t is
-    port(
-        A, B: in STD_LOGIC;
-        R: out STD_LOGIC
-    );
-end component;
-
-signal t1, t2: STD_LOGIC;
-
+	signal t1, t2: std_logic;
 begin
-    U2: nor2t port map (A => R, B => t1, R => t2);
-    U1: nor2t port map (A => S, B => t2, R => t1);
-    nQ <= t1;
-    Q <= t2;
+	t2 <= R nor t1 after 3 ns;
+	t1 <= S nor t2 after 3 ns;
+	nQ <= transport t1 after 2 ns;
+	Q <= transport t2 after 3 ns;
 end Parametral;
 
 -- TEST --
@@ -120,11 +112,11 @@ architecture Test of ex02t is
 	signal nQ_param: STD_LOGIC;	
 	
 begin
-	U1: ex02s port map (R => R, S => S, Q => Q_struct, nQ => nQ_struct);
+	Structural: ex02s port map (R, S, Q_struct, nQ_struct);
 	
-	U2: ex02b port map (R => R, S => S, Q => Q_beh, nQ => nQ_beh);	 
+	Behavioral: ex02b port map (R, S, Q_beh, nQ_beh);	 
 	
-	U3: ex02p port map (R => R, S => S, Q => Q_param, nQ => nQ_param);
+	Parametral: ex02p port map (R, S, Q_param, nQ_param);
 
 	Simulate: process
 	begin
