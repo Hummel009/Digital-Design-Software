@@ -16,13 +16,13 @@ architecture Structural of ex01 is
 	
 	component inv
 		port(
-			a: in std_logic;
-			nA: out std_logic
+			a: in STD_LOGIC;
+			nA: out STD_LOGIC
 		);
 	end component;
 	
-	signal inv_0_o: std_logic;  
-	signal inv_1_o: std_logic;
+	signal inv_0_o: STD_LOGIC;  
+	signal inv_1_o: STD_LOGIC;
 	
 begin	
 	inv_0: inv port map (a => inv_1_o, nA => inv_0_o);
@@ -34,7 +34,7 @@ end Structural;
 -- TEST  --
 
 library ieee;
-use ieee.std_logic_1164.all;
+use ieee.STD_LOGIC_1164.all;
 
 entity ex01t is
 end ex01t;
