@@ -4,7 +4,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0101s is
-	generic (n: integer := 4);
+	generic(
+		n: INTEGER := 4
+	);
 	port(
 		Din: in STD_LOGIC_VECTOR(n-1 downto 0);
 		EN: in STD_LOGIC;
@@ -33,7 +35,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0101b is
-	generic (n: integer := 4);
+	generic(
+		n: INTEGER := 4
+	);
 	port(
 		Din: in STD_LOGIC_VECTOR(n-1 downto 0);
 		EN: in STD_LOGIC;
@@ -55,13 +59,17 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.all;
 
 entity ex0101t is
-	generic (n: integer := 4);
+	generic(
+		n: INTEGER := 4
+	);
 end ex0101t;
 
 architecture Test of ex0101t is
 
 	component ex0101s
-		generic (n: integer := 4);
+		generic(
+			n: INTEGER := 4
+		);
 		port(
 			Din: in STD_LOGIC_VECTOR(n-1 downto 0);
 			EN: in STD_LOGIC;
@@ -70,7 +78,9 @@ architecture Test of ex0101t is
 	end component;
 
 	component ex0101b
-		generic (n: integer := 4);
+		generic(
+			n: INTEGER := 4
+		);
 		port(
 			Din: in STD_LOGIC_VECTOR(n-1 downto 0);
 			EN: in STD_LOGIC;
@@ -89,8 +99,8 @@ architecture Test of ex0101t is
 	
 begin
 
-	Behavioral: ex0101b generic map (register_size) port map (Din, EN, Dout_Behavioral);	
 	Structural: ex0101s generic map (register_size) port map (Din, EN, Dout_Structural);
+	Behavioral: ex0101b generic map (register_size) port map (Din, EN, Dout_Behavioral);	
 	
 	Din <= Din + "1" after in_delay;
 	

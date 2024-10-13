@@ -4,11 +4,12 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0102s is
-	generic (n: integer := 4);
+	generic(
+		n: INTEGER := 4
+	);
 	port(
 		Din: in STD_LOGIC_VECTOR(n-1 downto 0);
-		EN: in STD_LOGIC;
-		CLK : in std_logic;
+		EN, CLK : in STD_LOGIC;
 		Dout: out STD_LOGIC_VECTOR(n-1 downto 0)
 	);
 end ex0102s;
@@ -34,11 +35,12 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0102b is
-	generic (n: integer := 4);
+	generic(
+		n: INTEGER := 4
+	);
 	port(
 		Din: in STD_LOGIC_VECTOR(n-1 downto 0);
-		EN: in STD_LOGIC;
-		CLK : in std_logic;
+		EN, CLK : in STD_LOGIC;
 		Dout: out STD_LOGIC_VECTOR(n-1 downto 0)
 	);
 end ex0102b;
@@ -67,27 +69,31 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.all;
 
 entity ex0102t is
-	generic (n: integer := 4);
+	generic(
+		n: INTEGER := 4
+	);
 end ex0102t;
 
 architecture Test of ex0102t is
 
 	component ex0102s
-		generic (n: integer := 4);
+		generic(
+			n: INTEGER := 4
+		);
 		port(
 			Din: in STD_LOGIC_VECTOR(n-1 downto 0);
-			EN: in STD_LOGIC;
-			CLK: in STD_LOGIC;
+			EN, CLK: in STD_LOGIC;
 			Dout: out STD_LOGIC_VECTOR(n-1 downto 0) 
 		);
 	end component;
 
 	component ex0102b
-		generic (n: integer := 4);
+		generic(
+			n: INTEGER := 4
+		);
 		port(
 			Din: in STD_LOGIC_VECTOR(n-1 downto 0);
-			EN: in STD_LOGIC;
-			CLK: in STD_LOGIC;
+			EN, CLK: in STD_LOGIC;
 			Dout: out STD_LOGIC_VECTOR(n-1 downto 0) 
 		);
 	end component;
@@ -104,8 +110,8 @@ architecture Test of ex0102t is
 	
 begin
 
-	Behavioral: ex0102b generic map (register_size) port map (Din, EN, CLK, Dout_Behavioral);	
 	Structural: ex0102s generic map (register_size) port map (Din, EN, CLK, Dout_Structural);
+	Behavioral: ex0102b generic map (register_size) port map (Din, EN, CLK, Dout_Behavioral);
 	
 	CLK <= not CLK after clock_period;	
 	Din <= Din + "1" after clock_period * 2;
