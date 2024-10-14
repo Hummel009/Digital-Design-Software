@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0301 is
 	generic(
-		N: integer := 4
+		N: INTEGER := 4
 	);
 	port(
 		CLK, RST: in STD_LOGIC;
