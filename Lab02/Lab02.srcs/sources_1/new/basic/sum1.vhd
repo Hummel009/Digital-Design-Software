@@ -25,7 +25,7 @@ architecture Behavioral of sum1 is
 			A, B: in std_logic;
 			R: out std_logic
 		);
-	end component;				 
+	end component;
 
 	signal S1, P1, P2: std_logic;
 

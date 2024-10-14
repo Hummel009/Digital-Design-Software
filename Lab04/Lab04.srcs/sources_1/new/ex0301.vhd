@@ -7,7 +7,7 @@ entity ex0301 is
 	generic (N:integer := 4);
 	port(
 		CLK: in STD_LOGIC;
-		RST: in STD_LOGIC;		
+		RST: in STD_LOGIC;
 		Pout: out STD_LOGIC_VECTOR(0 to N-1)
 	);
 end ex0301;
@@ -22,8 +22,8 @@ begin
 		elsif rising_edge(CLK) then
 			register_state <= not(register_state(N-1)) & register_state(0 to N-2);
 		end if;
-	end process;	
-	
+	end process;
+
 	Pout <= register_state;
 end Behavioral;
 
@@ -39,23 +39,23 @@ architecture TESTBENCH of ex0301t is
 	component ex0301
 		port(
 			CLK: in STD_LOGIC;
-			RST: in STD_LOGIC;			
+			RST: in STD_LOGIC;
 			Pout: out STD_LOGIC_VECTOR(0 to 3)
 		);
 	end component;
-	
+
 	signal CLK: STD_LOGIC := '0';
 	signal RST: STD_LOGIC := '1';
-	
+
 	signal Pout: STD_LOGIC_VECTOR(0 to 3);
-	
+
 	constant clock_period: time := 10 ns;
-	
+
 begin
 	UUT: ex0301 port map (CLK, RST,	POut);
-	
+
 	CLK <= not CLK after clock_period;
-	
+
 	reset: process
 	begin
 		RST <= '1';
@@ -63,5 +63,5 @@ begin
 		RST <= '0';
 		wait for clock_period * 16;
 	end process;
-	
+
 end TESTBENCH;

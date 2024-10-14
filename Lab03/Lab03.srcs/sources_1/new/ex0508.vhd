@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0508 is
 	port(
-		J, K, CLK: in STD_LOGIC;	
+		J, K, CLK: in STD_LOGIC;
 		Q: out STD_LOGIC
 	);
 end ex0508;
@@ -13,17 +13,17 @@ architecture Behavioral of ex0508 is
 begin
 	process(J, K, CLK)
 	begin
-		if rising_edge(CLK) then 
+		if rising_edge(CLK) then
 			if (J = '1' and K = '1') then
 				result <= not result;
 			elsif K = '1' then
 				result <= '0';
 			elsif J = '1' then
 				result <= '1';
-			end if; 
+			end if;
 		end if;
-	end process; 
-	
+	end process;
+
 	Q <= result;
 end Behavioral;
 
@@ -46,11 +46,11 @@ architecture Test of ex0508t is
 	signal J: STD_LOGIC := '0';
 	signal K: STD_LOGIC := '0';
 	signal CLK: STD_LOGIC := '0';
-	
+
 	signal Q: STD_LOGIC := '0';
-	
+
 	constant clock: time := 10 ns;
-	
+
 begin
 	UUT: ex0508 port map (J, K, CLK, Q);
 

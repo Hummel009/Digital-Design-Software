@@ -1,23 +1,23 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity ex0503 is 
+entity ex0503 is
 	port(
 		D, CLK: in STD_LOGIC;
 		Q: out STD_LOGIC
 	);
 end ex0503;
 
-architecture Behavioral of ex0503 is		   
+architecture Behavioral of ex0503 is
 	signal S: STD_LOGIC;
 begin
 	process(CLK)
-	begin		
+	begin
 		if rising_edge(CLK) then
 			S <= D;
 		end if;
-	end process;	
-	
+	end process;
+
 	Q <= S;
 end Behavioral;
 
@@ -42,12 +42,12 @@ architecture Test of ex0503t is
 	signal CLK: STD_LOGIC := '0';
 
 	signal Q: STD_LOGIC := '0';
-	
+
 	constant clock: time := 10 ns;
-	
+
 begin
-	UUT: ex0503 port map (D, CLK, Q);	  
-	
+	UUT: ex0503 port map (D, CLK, Q);
+
 	D <= not D after clock * 4;
 	CLK <= not CLK after clock;
 end Test;

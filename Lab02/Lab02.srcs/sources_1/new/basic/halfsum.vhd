@@ -31,7 +31,7 @@ architecture struct of halfsum is
 			A, B: in std_logic;
 			Z: out std_logic
 		);
-	end component;					
+	end component;
 
 	signal AorB, AB, nAB: std_logic;
 

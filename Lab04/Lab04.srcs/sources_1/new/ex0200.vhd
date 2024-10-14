@@ -11,7 +11,7 @@ entity ex0200s is
 		Sin, SE, CLK, RST: in STD_LOGIC;
 		Dout: out STD_LOGIC_VECTOR(0 to N-1)
 	);
-end ex0200s;	
+end ex0200s;
 
 architecture Structural of ex0200s is
 
@@ -21,18 +21,18 @@ architecture Structural of ex0200s is
 			Q: out STD_LOGIC
 		);
 	end component;
-	
+
 	signal outS: STD_LOGIC_VECTOR(0 to N-1);
 
-begin			   
+begin
 	U_0: d_flipflop_clr port map(CLK, SE, RST, Sin, outS(0));
-	
-	reg: for I in 1 to N-1 generate			
+
+	reg: for I in 1 to N-1 generate
 		U_I: d_flipflop_clr port map (CLK, SE, RST, outS(I-1), outS(I));
 	end generate;
-	
+
 	Dout <= outS;
-end Structural;		  
+end Structural;
 
 -- BEHAVIORAL --
 
@@ -47,7 +47,7 @@ entity ex0200b is
 		Sin, SE, CLK, RST: in STD_LOGIC;
 		Dout: out STD_LOGIC_VECTOR(0 to N-1)
 	);
-end ex0200b;	
+end ex0200b;
 
 architecture Behavioral of ex0200b is
 	signal register_state: STD_LOGIC_VECTOR(0 to N-1);
@@ -61,17 +61,17 @@ begin
 				register_state <= Sin & register_state(0 to N-2);
 			end if;
 		end if;
-	end process;	
-	
-	Dout <= register_state; 
+	end process;
+
+	Dout <= register_state;
 end Behavioral;
 
 -- TEST --
 
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;	
+use IEEE.STD_LOGIC_1164.ALL;
 
-entity ex0200t is	
+entity ex0200t is
 	generic(
 		N: INTEGER := 3
 	);
@@ -98,17 +98,17 @@ architecture Test of ex0200t is
 			Dout: out STD_LOGIC_VECTOR(0 to N-1)
 		);
 	end component;
-	
+
 	signal Sin: STD_LOGIC := '0';
 	signal SE: STD_LOGIC := '1';
 	signal CLK: STD_LOGIC := '0';
 	signal RST: STD_LOGIC;
-	
+
 	signal Dout_Behavioral: STD_LOGIC_VECTOR(0 to N-1);
 	signal Dout_Structural: STD_LOGIC_VECTOR(0 to N-1);
-	
+
 	constant clock_period: TIME := 10 ns;
-	
+
 begin
 
 	Structural: ex0200s generic map (N) port map (Sin, SE, CLK, RST, Dout_Structural);
@@ -121,9 +121,9 @@ begin
 		RST <= '0';
 		wait for clock_period * (N + 1) * 2;
 	end process;
-	
+
 	CLK <= not CLK after clock_period;
 	Sin <= not Sin after clock_period;
-	SE <= not SE after clock_period * (N + 1) * 2;	
-	
+	SE <= not SE after clock_period * (N + 1) * 2;
+
 end Test;

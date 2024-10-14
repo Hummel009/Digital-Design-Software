@@ -11,7 +11,7 @@ end d_latch;
 
 architecture Behavioral of d_latch is
 	signal data : std_logic;
-begin	
+begin
 	data <= D when (E = '1');
 	Q <= data;
 	nQ <= not data;

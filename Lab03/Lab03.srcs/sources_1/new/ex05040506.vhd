@@ -19,11 +19,11 @@ begin
 			S <= '1';
 		elsif E = '1' then
 			if rising_edge(CLK) then
-				S <= D;	 
+				S <= D;
 			end if;
 		end if;
-	end process; 
-	
+	end process;
+
 	Q <= S;
 end Behavioral;
 
@@ -42,15 +42,15 @@ architecture Test of ex05040506t is
 			Q: out STD_LOGIC
 		);
 	end component;
-	
+
 	signal CLR: STD_LOGIC := '0';
 	signal PRE: STD_LOGIC := '0';
 	signal D: STD_LOGIC := '0';
 	signal E: STD_LOGIC := '0';
 	signal CLK: STD_LOGIC := '0';
-	
-	signal Q: STD_LOGIC;	
-	
+
+	signal Q: STD_LOGIC;
+
 	constant clock: time := 10 ns;
 begin
 	UUT: ex05040506

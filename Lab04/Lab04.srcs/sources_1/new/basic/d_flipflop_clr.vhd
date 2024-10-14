@@ -14,13 +14,13 @@ begin
 	process(CLR, D, E, CLK)
 	begin
 		if CLR = '1' then
-			s <= '0';		
+			s <= '0';
 		elsif E = '1' then
 			if rising_edge(CLK) then
-				s <= D;	 
+				s <= D;
 			end if;
 		end if;
-	end process; 
-	
+	end process;
+
 	Q <= s;
 end Behavioral;

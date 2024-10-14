@@ -12,5 +12,5 @@ architecture Behavioral of nor2 is
 	attribute dont_touch: STRING;
 	attribute dont_touch of Behavioral: architecture is "true";
 begin
-	R <= A nor B;		
+	R <= A nor B;
 end;

@@ -2,7 +2,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
- 
+
 entity ex02s is
 	port(
 		R, S: in STD_LOGIC;
@@ -18,9 +18,9 @@ architecture Structural of ex02s is
 			R: out STD_LOGIC
 		);
 	end component;
-	
+
 	signal t1, t2: STD_LOGIC;
-	
+
 begin
 	U2: nor2 port map (R, t1, t2);
 	U1: nor2 port map (S, t2, t1);
@@ -86,70 +86,70 @@ architecture Test of ex02t is
 			Q, nQ: out STD_LOGIC
 		);
 	end component;
-	
+
 	component ex02s
 		port(
 			R, S: in STD_LOGIC;
 			Q, nQ: out STD_LOGIC
 		);
 	end component;
-	
+
 	component ex02p
 		port(
 			R, S: in STD_LOGIC;
 			Q, nQ: out STD_LOGIC
 		);
 	end component;
-	
+
 	signal R: STD_LOGIC;
 	signal S: STD_LOGIC;
-	
+
 	signal Q_struct: STD_LOGIC;
-	signal nQ_struct: STD_LOGIC;	 
-	
+	signal nQ_struct: STD_LOGIC;
+
 	signal Q_beh: STD_LOGIC;
 	signal nQ_beh: STD_LOGIC;
-	
+
 	signal Q_param: STD_LOGIC;
-	signal nQ_param: STD_LOGIC;	
-	
+	signal nQ_param: STD_LOGIC;
+
 	constant clock: time := 10 ns;
-	
+
 begin
 	Structural: ex02s port map (R, S, Q_struct, nQ_struct);
-	
-	Behavioral: ex02b port map (R, S, Q_beh, nQ_beh);	 
-	
+
+	Behavioral: ex02b port map (R, S, Q_beh, nQ_beh);
+
 	Parametral: ex02p port map (R, S, Q_param, nQ_param);
 
 	Simulate: process
 	begin
 		R <= '0';
 		S <= '0';
-		wait for clock;	 
-		
+		wait for clock;
+
 		R <= '1';
 		S <= '0';
-		wait for clock;	
-		
+		wait for clock;
+
 		R <= '0';
 		S <= '0';
-		wait for clock;	 
-		
+		wait for clock;
+
 		R <= '0';
 		S <= '1';
-		wait for clock;	 
-		
+		wait for clock;
+
 		R <= '0';
 		S <= '0';
-		wait for clock;		
-		
-		-- error value 
-		
+		wait for clock;
+
+		-- error value
+
 		R <= '1';
 		S <= '1';
-		wait for clock;	
-		
+		wait for clock;
+
 		R <= '0';
 		S <= '0';
 		wait for clock;
