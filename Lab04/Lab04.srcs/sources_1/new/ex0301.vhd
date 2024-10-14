@@ -1,11 +1,9 @@
--- BEHAVIORAL --
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0301 is
 	generic(
-		N: INTEGER := 4
+		N: INTEGER := 7
 	);
 	port(
 		CLK, RST: in STD_LOGIC;
@@ -14,12 +12,12 @@ entity ex0301 is
 end ex0301;
 
 architecture Behavioral of ex0301 is
-	signal register_state: STD_LOGIC_VECTOR(0 to N-1);
+	signal register_state: STD_LOGIC_VECTOR(0 to N-1) := "0000000";
 begin
 	Main: process (CLK, RST)
 	begin
 		if RST = '1' then
-			register_state <= (others => '0');
+			register_state <= "0000000";
 		elsif rising_edge(CLK) then
 			register_state <= not(register_state(N-1)) & register_state(0 to N-2);
 		end if;
@@ -34,22 +32,27 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0301t is
+	generic(
+		N: INTEGER := 7
+	);
 end ex0301t;
 
 architecture Test of ex0301t is
 
 	component ex0301
+		generic(
+			N: INTEGER := 7
+		);
 		port(
-			CLK: in STD_LOGIC;
-			RST: in STD_LOGIC;
-			Pout: out STD_LOGIC_VECTOR(0 to 3)
+			CLK, RST: in STD_LOGIC;
+			Pout: out STD_LOGIC_VECTOR(0 to N-1)
 		);
 	end component;
 
 	signal CLK: STD_LOGIC := '0';
 	signal RST: STD_LOGIC := '1';
 
-	signal Pout: STD_LOGIC_VECTOR(0 to 3);
+	signal Pout: STD_LOGIC_VECTOR(0 to N-1);
 
 	constant clock_period: TIME := 10 ns;
 
@@ -63,7 +66,7 @@ begin
 		RST <= '1';
 		wait for clock_period;
 		RST <= '0';
-		wait for clock_period * 16;
+		wait for clock_period * N * 4;
 	end process;
 
 end Test;
