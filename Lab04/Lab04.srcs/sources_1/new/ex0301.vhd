@@ -4,10 +4,11 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0301 is
-	generic (N: integer := 4);
+	generic(
+		N: integer := 4
+	);
 	port(
-		CLK: in STD_LOGIC;
-		RST: in STD_LOGIC;
+		CLK, RST: in STD_LOGIC;
 		Pout: out STD_LOGIC_VECTOR(0 to N-1)
 	);
 end ex0301;
@@ -35,7 +36,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ex0301t is
 end ex0301t;
 
-architecture TESTBENCH of ex0301t is
+architecture Test of ex0301t is
 
 	component ex0301
 		port(
@@ -65,4 +66,4 @@ begin
 		wait for clock_period * 16;
 	end process;
 
-end TESTBENCH;
+end Test;

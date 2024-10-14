@@ -25,7 +25,7 @@ architecture Structural of ex0401s is
 			Q: out STD_LOGIC
 		);
 	end component;
- 
+
 	signal R: STD_LOGIC;
 
 begin

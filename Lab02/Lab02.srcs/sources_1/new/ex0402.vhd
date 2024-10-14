@@ -18,7 +18,7 @@ architecture Structural of ex0402s is
 			R: out STD_LOGIC
 		);
 	end component;
- 
+
 	signal nS: STD_LOGIC;
 
 begin
