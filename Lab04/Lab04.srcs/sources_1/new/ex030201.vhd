@@ -13,13 +13,19 @@ end ex030201;
 
 architecture Behavioral of ex030201 is
 	signal register_state: STD_LOGIC_VECTOR(0 to N-1) := "1111111";
+	signal new_bit: STD_LOGIC;
 begin
+	Sum_Process: process(register_state)
+	begin
+		new_bit <= register_state(0) xor register_state(N-1);
+	end process;
+
 	Main: process (CLK, RST)
 	begin
 		if RST = '1' then
 			register_state <= "1111111";
 		elsif rising_edge(CLK) then
-			register_state <= (register_state(N-1) & (register_state(0) xor register_state(N-1))) & register_state(1 to N-2);
+			register_state <= new_bit & register_state(0 to N-2);
 		end if;
 	end process;
 
