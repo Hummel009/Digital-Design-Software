@@ -49,7 +49,7 @@ architecture TESTBENCH of ex0301t is
 
 	signal Pout: STD_LOGIC_VECTOR(0 to 3);
 
-	constant clock_period: time := 10 ns;
+	constant clock_period: TIME := 10 ns;
 
 begin
 	UUT: ex0301 port map (CLK, RST,	POut);
