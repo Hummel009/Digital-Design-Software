@@ -30,7 +30,7 @@ begin
 	nQ <= inv_0_o;
 end Structural;
 
--- TEST  --
+-- TEST --
 
 library ieee;
 use ieee.STD_LOGIC_1164.all;

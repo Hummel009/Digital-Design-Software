@@ -9,7 +9,7 @@ entity ex0203 is
 end ex0203;
 
 architecture Behavioral of ex0203 is
-	signal tempQ : STD_LOGIC;
+	signal tempQ: STD_LOGIC;
 begin
 	tempQ <= (A and B) or (C and not B);
 	Q <= tempQ;

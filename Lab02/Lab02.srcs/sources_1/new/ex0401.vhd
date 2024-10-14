@@ -19,7 +19,7 @@ architecture Structural of ex0401s is
 		);
 	end component;
 
-	component mux_ex01 is
+	component mux is
 		port(
 			A, B, S: in STD_LOGIC;
 			Q: out STD_LOGIC
@@ -29,7 +29,7 @@ architecture Structural of ex0401s is
 	signal R: STD_LOGIC;
 
 begin
-	MUX: mux_ex01 port map(A, B, S, R);
+	MUX: mux port map(A, B, S, R);
 	COMB: and2 port map(R, C, Q);
 end Structural;
 
@@ -82,7 +82,7 @@ architecture Test of ex0401t is
 	signal ERROR: STD_LOGIC;
 	signal TEST_VECTOR: STD_LOGIC_VECTOR(3 downto 0);
 
-	constant PERIOD: time := 10 ns;
+	constant PERIOD: TIME := 10 ns;
 
 begin
 	UUT_S: ex0401s port map(S, A, B, C, Q_S);

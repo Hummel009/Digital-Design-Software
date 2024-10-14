@@ -22,9 +22,9 @@ architecture Structural of ex0402s is
 	signal nS: STD_LOGIC;
 
 begin
-		nS <= not S;
-		U1: and2 port map(D, nS, Q1);
-		U2: and2 port map(D, S, Q2);
+	nS <= not S;
+	U1: and2 port map(D, nS, Q1);
+	U2: and2 port map(D, S, Q2);
 end Structural;
 
 -- BEHAVIORAL --
@@ -84,7 +84,7 @@ architecture Test of ex0402t is
 	signal ERROR_2: STD_LOGIC;
 	signal TEST_VECTOR: STD_LOGIC_VECTOR(1 downto 0);
 
-	constant PERIOD: time := 10 ns;
+	constant PERIOD: TIME := 10 ns;
 
 begin
 	UUT_S: ex0402s port map(S, D, Q1_S, Q2_S);

@@ -3,11 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity sum1 is
 	port(
-		A: in STD_LOGIC;
-		B: in STD_LOGIC;
-		P0: in STD_LOGIC;
-		S: out STD_LOGIC;
-		P: out STD_LOGIC
+		A, B, P0: in STD_LOGIC;
+		S, P: out STD_LOGIC
 	);
 end sum1;
 
@@ -15,19 +12,19 @@ architecture Behavioral of sum1 is
 
 	component halfsum
 		port(
-			A, B: in std_logic;
-			S, P: out std_logic
+			A, B: in STD_LOGIC;
+			S, P: out STD_LOGIC
 		);
 	end component;
 
 	component or2
 		port(
-			A, B: in std_logic;
-			R: out std_logic
+			A, B: in STD_LOGIC;
+			R: out STD_LOGIC
 		);
 	end component;
 
-	signal S1, P1, P2: std_logic;
+	signal S1, P1, P2: STD_LOGIC;
 
 begin
 	SUM_1: halfsum port map(A, B, S1, P1);

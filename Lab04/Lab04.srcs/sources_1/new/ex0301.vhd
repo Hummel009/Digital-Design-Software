@@ -4,7 +4,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity ex0301 is
-	generic (N:integer := 4);
+	generic (N: integer := 4);
 	port(
 		CLK: in STD_LOGIC;
 		RST: in STD_LOGIC;
@@ -36,6 +36,7 @@ entity ex0301t is
 end ex0301t;
 
 architecture TESTBENCH of ex0301t is
+
 	component ex0301
 		port(
 			CLK: in STD_LOGIC;

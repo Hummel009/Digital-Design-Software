@@ -3,37 +3,35 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity halfsum is
 	port(
-		A: in STD_LOGIC;
-		B: in STD_LOGIC;
-		S: out STD_LOGIC;
-		P: out STD_LOGIC
+		A, B: in STD_LOGIC;
+		S, P: out STD_LOGIC
 	);
 end halfsum;
 
-architecture struct of halfsum is
+architecture Structural of halfsum is
 
 	component and2
 		port(
-			A, B: in std_logic;
-			Z: out std_logic
+			A, B: in STD_LOGIC;
+			Z: out STD_LOGIC
 		);
 	end component;
 
 	component inv
 		port(
-			A: in std_logic;
-			nA: out std_logic
+			A: in STD_LOGIC;
+			nA: out STD_LOGIC
 		);
 	end component;
 
 	component or2
 		port(
-			A, B: in std_logic;
-			Z: out std_logic
+			A, B: in STD_LOGIC;
+			Z: out STD_LOGIC
 		);
 	end component;
 
-	signal AorB, AB, nAB: std_logic;
+	signal AorB, AB, nAB: STD_LOGIC;
 
 begin
 	OR_1: or2 port map (A, B, AorB);
@@ -41,10 +39,10 @@ begin
 	AND_2: and2 port map (AorB, nAB, S);
 	NOT_1: inv port map (AB, nAB);
 	P <= AB;
-end struct;
+end Structural;
 
-architecture beh of halfsum is
+architecture Behavioral of halfsum is
 begin
 	P <= A and B;
 	S <= (A or B) and not (A and B);
-end beh;
+end Behavioral;

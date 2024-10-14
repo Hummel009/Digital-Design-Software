@@ -10,7 +10,7 @@ entity d_latch is
 end d_latch;
 
 architecture Behavioral of d_latch is
-	signal data:STD_LOGIC;
+	signal data: STD_LOGIC;
 begin
 	data <= D when (E = '1');
 	Q <= data;

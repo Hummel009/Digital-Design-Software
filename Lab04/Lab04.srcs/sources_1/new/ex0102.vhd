@@ -9,7 +9,7 @@ entity ex0102s is
 	);
 	port(
 		Din: in STD_LOGIC_VECTOR(n-1 downto 0);
-		EN, CLK:in STD_LOGIC;
+		EN, CLK: in STD_LOGIC;
 		Dout: out STD_LOGIC_VECTOR(n-1 downto 0)
 	);
 end ex0102s;
@@ -40,15 +40,15 @@ entity ex0102b is
 	);
 	port(
 		Din: in STD_LOGIC_VECTOR(n-1 downto 0);
-		EN, CLK:in STD_LOGIC;
+		EN, CLK: in STD_LOGIC;
 		Dout: out STD_LOGIC_VECTOR(n-1 downto 0)
 	);
 end ex0102b;
 
 architecture Behavioral of ex0102b is
-	signal result:STD_LOGIC_VECTOR(n-1 downto 0);
+	signal result: STD_LOGIC_VECTOR(n-1 downto 0);
 begin
-	main:process(Din, EN, CLK)
+	main: process(Din, EN, CLK)
 	begin
 		if EN = '1' then
 			if rising_edge(CLK) then
@@ -100,13 +100,13 @@ architecture Test of ex0102t is
 
 	signal Din: STD_LOGIC_VECTOR(n-1 downto 0) := (others => '0');
 	signal EN: STD_LOGIC := '0';
-	signal CLK:STD_LOGIC := '0';
+	signal CLK: STD_LOGIC := '0';
 
 	signal Dout_Behavioral: STD_LOGIC_VECTOR(n-1 downto 0);
 	signal Dout_Structural: STD_LOGIC_VECTOR(n-1 downto 0);
 
 	constant register_size: INTEGER := 4;
-	constant clock_period:TIME := 10 ns;
+	constant clock_period: TIME := 10 ns;
 
 begin
 

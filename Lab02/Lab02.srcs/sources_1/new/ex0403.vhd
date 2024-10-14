@@ -12,21 +12,21 @@ end ex0403s;
 
 architecture Structural of ex0403s is
 
-    component and2
-    port(
-        A, B: in STD_LOGIC;
-        R: out STD_LOGIC
-    );
-    end component;
+	component and2
+		port(
+			A, B: in STD_LOGIC;
+			R: out STD_LOGIC
+		);
+	end component;
 
-    signal tQ : std_logic_vector (3 downto 0);
+	signal tQ: STD_LOGIC_vector (3 downto 0);
 
 begin
-    U0: and2 port map(A(0), A(1), tQ(0));
-    GEN: for i in 2 to 4 generate
-        U: and2 port map(A(i), tQ(i - 2), tQ(i - 1));
-    end generate;
-    Q <= tQ(3);
+	U0: and2 port map(A(0), A(1), tQ(0));
+	GEN: for i in 2 to 4 generate
+		U: and2 port map(A(i), tQ(i - 2), tQ(i - 1));
+		end generate;
+	Q <= tQ(3);
 end Structural;
 
 -- BEHAVIORAL --
@@ -42,7 +42,7 @@ entity ex0403b is
 end ex0403b;
 
 architecture Behavioral of ex0403b is
-    signal tQ: STD_LOGIC;
+	signal tQ: STD_LOGIC;
 begin
 	Q <= A(0) and A(1) and A(2) and A(3) and A(4);
 end Behavioral;
@@ -77,7 +77,7 @@ architecture Test of ex0403t is
 	signal ERROR: STD_LOGIC;
 	signal TEST_VECTOR: STD_LOGIC_VECTOR(4 downto 0);
 
-	constant PERIOD: time := 10 ns;
+	constant PERIOD: TIME := 10 ns;
 
 begin
 	UUT_S: ex0403s port map(A, Q_S);

@@ -122,7 +122,7 @@ architecture Test of ex03t is
 	signal Q_param: STD_LOGIC;
 	signal nQ_param: STD_LOGIC;
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
 
 begin
 	Structural: ex03s port map (D, Q_struct, nQ_struct);

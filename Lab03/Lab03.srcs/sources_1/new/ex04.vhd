@@ -11,6 +11,7 @@ entity ex04s is
 end ex04s;
 
 architecture Structural of ex04s is
+
 	component nor2
 		port(
 			A, B: in STD_LOGIC;
@@ -93,6 +94,7 @@ entity ex04t is
 end ex04t;
 
 architecture Test of ex04t is
+
 	component ex04s
 		port(
 			D, E: in STD_LOGIC;
@@ -126,7 +128,7 @@ architecture Test of ex04t is
 	signal Q_param: STD_LOGIC;
 	signal nQ_param: STD_LOGIC;
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
 
 begin
 	Structural: ex04s port map (D, E, Q_struct, nQ_struct);

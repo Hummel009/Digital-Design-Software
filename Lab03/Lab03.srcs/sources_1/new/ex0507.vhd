@@ -36,6 +36,7 @@ entity ex0507t is
 end ex0507t;
 
 architecture Test of ex0507t is
+
 	component ex0507
 		port(
 			R, S, CLK: in STD_LOGIC;
@@ -49,7 +50,7 @@ architecture Test of ex0507t is
 
 	signal Q: STD_LOGIC := '0';
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
 
 begin
 	UUT: ex0507 port map (R, S, CLK, Q);

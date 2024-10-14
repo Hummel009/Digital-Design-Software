@@ -74,7 +74,7 @@ architecture Test of exaddt is
 	signal ERROR: STD_LOGIC;
 	signal TEST_VECTOR: STD_LOGIC_VECTOR(3 downto 0);
 
-	constant PERIOD: time := 10 ns;
+	constant PERIOD: TIME := 10 ns;
 
 begin
 	UUT_S: exadds port map(A, B, C, D, Q_S);

@@ -49,7 +49,7 @@ architecture Test of ex0508t is
 
 	signal Q: STD_LOGIC := '0';
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
 
 begin
 	UUT: ex0508 port map (J, K, CLK, Q);

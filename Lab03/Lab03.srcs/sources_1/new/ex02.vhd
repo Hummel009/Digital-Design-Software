@@ -62,7 +62,7 @@ entity ex02p is
 end ex02p;
 
 architecture Parametral of ex02p is
-	signal t1, t2: std_logic;
+	signal t1, t2: STD_LOGIC;
 begin
 	t2 <= R nor t1 after 3 ns;
 	t1 <= S nor t2 after 3 ns;
@@ -113,7 +113,7 @@ architecture Test of ex02t is
 	signal Q_param: STD_LOGIC;
 	signal nQ_param: STD_LOGIC;
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
 
 begin
 	Structural: ex02s port map (R, S, Q_struct, nQ_struct);

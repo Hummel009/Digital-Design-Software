@@ -6,21 +6,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ex0404s is
 	port(
 		A0, B0, A1, B1, C0: in STD_LOGIC;
-		S0, S1: out STD_LOGIC;
-		C2: out STD_LOGIC
+		S0, S1, C2: out STD_LOGIC
 	);
 end ex0404s;
 
 architecture Structural of ex0404s is
 
-    component sum1
-    port(
-		A, B, P0: in STD_LOGIC;
-		S, P: out STD_LOGIC
-    );
-    end component;
+	component sum1
+		port(
+			A, B, P0: in STD_LOGIC;
+			S, P: out STD_LOGIC
+		);
+	end component;
 
-    signal C1 : std_logic;
+	signal C1: STD_LOGIC;
 
 begin
 	SUM_1: sum1 port map(A0, B0, C0, S0, C1);
@@ -41,7 +40,7 @@ entity ex0404b is
 end ex0404b;
 
 architecture Behavioral of ex0404b is
-    signal C1, buf_C2: STD_LOGIC;
+	signal C1, buf_C2: STD_LOGIC;
 begin
 	C1 <= (A0 and B0) or (A0 and C0) or (B0 and C0);
 	C2 <= (A1 and B1) or (A1 and C1) or (B1 and C1);
@@ -83,7 +82,7 @@ architecture Test of ex0404t is
 	signal ERROR_S0, ERROR_S1, ERROR_C2: STD_LOGIC;
 	signal TEST_VECTOR: STD_LOGIC_VECTOR(4 downto 0);
 
-	constant PERIOD: time := 10 ns;
+	constant PERIOD: TIME := 10 ns;
 
 begin
 	UUT_S: ex0404s port map(A0, B0, A1, B1, C0, S0_S, S1_S, C2_S);

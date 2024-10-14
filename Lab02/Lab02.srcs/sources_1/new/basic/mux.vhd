@@ -1,14 +1,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity mux_ex01 is
+entity mux is
 	port(
 		A, B, S: in STD_LOGIC;
 		Q: out STD_LOGIC
 	);
-end mux_ex01;
+end mux;
 
-architecture Structural of mux_ex01 is
+architecture Structural of mux is
 
 	component inv
 		port(
@@ -32,6 +32,7 @@ architecture Structural of mux_ex01 is
 	end component;
 
 	signal nS, AnS, BS: STD_LOGIC;
+
 begin
 	U1: inv port map(S, nS);
 	U2: and2 port map(A, nS, AnS);

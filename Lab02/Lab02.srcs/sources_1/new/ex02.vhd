@@ -10,7 +10,7 @@ end ex02;
 
 architecture Structural of ex02 is
 
-	component mux_ex01 is
+	component mux is
 		port(
 			A, B, S: in STD_LOGIC;
 			Q: out STD_LOGIC
@@ -18,6 +18,6 @@ architecture Structural of ex02 is
 	end component;
 
 begin
-	U1: mux_ex01 port map(A, B, S, Q1);
-	U2: mux_ex01 port map(A1, B1, S, Q2);
+	U1: mux port map(A, B, S, Q1);
+	U2: mux port map(A1, B1, S, Q2);
 end Structural;

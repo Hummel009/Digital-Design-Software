@@ -36,6 +36,7 @@ entity ex05040506t is
 end ex05040506t;
 
 architecture Test of ex05040506t is
+
 	component ex05040506
 		port(
 			CLR, PRE, D, E, CLK: in STD_LOGIC;
@@ -51,7 +52,8 @@ architecture Test of ex05040506t is
 
 	signal Q: STD_LOGIC;
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
+
 begin
 	UUT: ex05040506
 	port map (CLR, PRE, D, E, CLK, Q);

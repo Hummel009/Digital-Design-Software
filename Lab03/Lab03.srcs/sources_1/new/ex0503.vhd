@@ -43,7 +43,7 @@ architecture Test of ex0503t is
 
 	signal Q: STD_LOGIC := '0';
 
-	constant clock: time := 10 ns;
+	constant clock: TIME := 10 ns;
 
 begin
 	UUT: ex0503 port map (D, CLK, Q);
