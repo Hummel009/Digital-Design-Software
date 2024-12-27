@@ -29,7 +29,7 @@ architecture Structural of ex0401s is
 	signal R: STD_LOGIC;
 
 begin
-	MUX: mux port map(A, B, S, R);
+	MULTIPLEX: mux port map(A, B, S, R);
 	COMB: and2 port map(R, C, Q);
 end Structural;
 
